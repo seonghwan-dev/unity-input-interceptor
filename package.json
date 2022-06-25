@@ -1,0 +1,17 @@
+{
+  "name": "com.seonghwan.windows.interceptor",
+  "displayName": "Windows Input Interceptor",
+  "description": "This plugin allows your script to determine when to intercept a player's keyboard input on Windows.",
+  "version": "1.0.0",
+  "unity": "2019.2",
+  "dependencies": {
+  },
+  "relatedPackages": {
+  },
+  "upm": {
+  },
+  "repository": {
+    "url": "https://github.com/seonghwan-dev/unity-input-interceptor",
+    "type": "git"
+  }
+}
