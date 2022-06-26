@@ -1,4 +1,4 @@
-﻿namespace Windows.Enums
+﻿namespace Calci.Windows.Enums
 {
     public enum EHookId : int
     {

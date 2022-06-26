@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Windows.Enums;
+using Calci.Windows.Enums;
 
-namespace Windows.API
+namespace Calci.Windows.API
 {
     public static class User32
     {
