@@ -11,30 +11,37 @@ using Calci;
 bool consumeEvent;
 
 void OnEnable() {
+    
+    IKeyCodeHandler handler = new MyKeyCodeHandler();
+    
+    Interceptor.SetKeyCodeHandler(handler);
+    Interceptor.SetManagePressedKey(true);
+    
     Interceptor.SetKeyDownCallback(OnKeyDown);
     Interceptor.SetKeyUpCallback(OnKeyUp);
-            
-    Interceptor.SetManagePressedKey(true);
-    Interceptor.SetUnityKeyCodeMap(true);
     
-    Interceptor.Hook();
+    bool result = Interceptor.Hook();
 }
 
 void OnDisable() {
-    Interceptor.Unhook();
+    bool result = Interceptor.Unhook();
 }
 
-bool OnKeyDown(KeyCode key)
+bool OnKeyDown(int keyCode)
 {
+    KeyCode key = (KeyCode)keyCode;
     string txt = $"KeyDown: {key}";
+
     Debug.Log(txt);
-    
+
     return consumeEvent;
 }
 
-bool OnKeyUp(KeyCode key)
+bool OnKeyUp(int keyCode)
 {
+    KeyCode key = (KeyCode)keyCode;
     string txt = $"KeyUp: {key}";
+
     Debug.Log(txt);
 
     return consumeEvent;

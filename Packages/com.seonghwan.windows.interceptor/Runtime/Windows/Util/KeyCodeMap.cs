@@ -3,9 +3,9 @@
  */
 
 using System.Collections.Generic;
-using UnityEngine;
+// using UnityEngine;
 
-namespace Windows.Utils
+namespace Calci.Windows.Utils
 {
     public enum VK
     {
@@ -409,132 +409,132 @@ namespace Windows.Utils
         public const int VK_VOLUME_UP = 0xAF; //	Volume Up
         public const int VK_XBUTTON1 = 0x05; //	X Button 1 **
         public const int VK_XBUTTON2 = 0x06; //	X Button 2 **
-
-        public static void SetMappings(Dictionary<ushort, KeyCode> map)
-        {
-            map[VK_ADD] = KeyCode.Plus; // 0x6B;//	Numpad +
-            map[VK_BACK] = KeyCode.Backspace; // 0x08;//	Backspace
-            map[VK_CANCEL] = KeyCode.Break; // 0x03;//	Break
-            map[VK_CLEAR] = KeyCode.Clear; //0x0C;//	Clear
-            map[VK_DECIMAL] = KeyCode.Numlock; //0x6E;//	Numpad.
-            map[VK_DIVIDE] = KeyCode.KeypadDivide; //0x6F;//	Numpad /
-            map[VK_ESCAPE] = KeyCode.Escape; //0x1B;//	Esc
-            map[VK_ICO_HELP] = KeyCode.Help; //0xE3;//	IcoHlp
-
-            map[VK_KEY_0] = KeyCode.Alpha0; //0x30;// ('0')	0
-            map[VK_KEY_1] = KeyCode.Alpha1; //0x31;// ('1')	1
-            map[VK_KEY_2] = KeyCode.Alpha2; //0x32;// ('2')	2
-            map[VK_KEY_3] = KeyCode.Alpha3; //0x33;// ('3')	3
-            map[VK_KEY_4] = KeyCode.Alpha4; //0x34;// ('4')	4
-            map[VK_KEY_5] = KeyCode.Alpha5; //0x35;// ('5')	5
-            map[VK_KEY_6] = KeyCode.Alpha6; //0x36;// ('6')	6
-            map[VK_KEY_7] = KeyCode.Alpha7; //0x37;// ('7')	7
-            map[VK_KEY_8] = KeyCode.Alpha8; //0x38;// ('8')	8
-            map[VK_KEY_9] = KeyCode.Alpha9; //0x39;// ('9')	9
-            map[VK_KEY_A] = KeyCode.A; //0x41;// ('A')	A
-            map[VK_KEY_B] = KeyCode.B; //0x42;// ('B')	B
-            map[VK_KEY_C] = KeyCode.C; //0x43;// ('C')	C
-            map[VK_KEY_D] = KeyCode.D; //0x44;// ('D')	D
-            map[VK_KEY_E] = KeyCode.E; //0x45;// ('E')	E
-            map[VK_KEY_F] = KeyCode.F; //0x46;// ('F')	F
-            map[VK_KEY_G] = KeyCode.G; //0x47;// ('G')	G
-            map[VK_KEY_H] = KeyCode.H; //0x48;// ('H')	H
-            map[VK_KEY_I] = KeyCode.I; //0x49;// ('I')	I
-            map[VK_KEY_J] = KeyCode.J; //0x4A;// ('J')	J
-            map[VK_KEY_K] = KeyCode.K; //0x4B;// ('K')	K
-            map[VK_KEY_L] = KeyCode.L; //0x4C;// ('L')	L
-            map[VK_KEY_M] = KeyCode.M; //0x4D;// ('M')	M
-            map[VK_KEY_N] = KeyCode.N; //0x4E;// ('N')	N
-            map[VK_KEY_O] = KeyCode.O; //0x4F;// ('O')	O
-            map[VK_KEY_P] = KeyCode.P; //0x50;// ('P')	P
-            map[VK_KEY_Q] = KeyCode.Q; //0x51;// ('Q')	Q
-            map[VK_KEY_R] = KeyCode.R; //0x52;// ('R')	R
-            map[VK_KEY_S] = KeyCode.S; //0x53;// ('S')	S
-            map[VK_KEY_T] = KeyCode.T; //0x54;// ('T')	T
-            map[VK_KEY_U] = KeyCode.U; //0x55;// ('U')	U
-            map[VK_KEY_V] = KeyCode.V; //0x56;// ('V')	V
-            map[VK_KEY_W] = KeyCode.W; //0x57;// ('W')	W
-            map[VK_KEY_X] = KeyCode.X; //0x58;// ('X')	X
-            map[VK_KEY_Y] = KeyCode.Y; //0x59;// ('Y')	Y
-            map[VK_KEY_Z] = KeyCode.Z; // 0x5A;// ('Z')	Z
-
-            map[VK_MULTIPLY] = KeyCode.KeypadMultiply; // 0x6A;//	Numpad*
-            map[VK_NONAME] = KeyCode.None; // 0xFC;//	NoName
-
-            map[VK_NUMPAD0] = KeyCode.Keypad0; //0x60;//	Numpad 0
-            map[VK_NUMPAD1] = KeyCode.Keypad1; //0x61;//	Numpad 1
-            map[VK_NUMPAD2] = KeyCode.Keypad2; //0x62;//	Numpad 2
-            map[VK_NUMPAD3] = KeyCode.Keypad3; //0x63;//	Numpad 3
-            map[VK_NUMPAD4] = KeyCode.Keypad4; //0x64;//	Numpad 4
-            map[VK_NUMPAD5] = KeyCode.Keypad5; //0x65;//	Numpad 5
-            map[VK_NUMPAD6] = KeyCode.Keypad6; //0x66;//	Numpad 6
-            map[VK_NUMPAD7] = KeyCode.Keypad7; //0x67;//	Numpad 7
-            map[VK_NUMPAD8] = KeyCode.Keypad8; //0x68;//	Numpad 8
-            map[VK_NUMPAD9] = KeyCode.Keypad9; //0x69;//	Numpad 9
-
-            map[VK_OEM_1] = KeyCode.Colon; // 0xBA;//	OEM_1(: ;)
-            map[VK_OEM_102] = KeyCode.Greater; //0xE2;//	OEM_102(> <)
-            map[VK_OEM_2] = KeyCode.Question; //0xBF;//	OEM_2(? /)
-            map[VK_OEM_3] = KeyCode.BackQuote; //0xC0;//	OEM_3(~ `)
-            map[VK_OEM_4] = KeyCode.LeftBracket; //0xDB;//	OEM_4({ [)
-            map[VK_OEM_5] = KeyCode.Backslash; //0xDC;//	OEM_5(| \)
-            map[VK_OEM_6] = KeyCode.RightBracket; //0xDD;//	OEM_6(} ])
-            map[VK_OEM_7] = KeyCode.DoubleQuote; //0xDE;//	OEM_7(" ')
-            map[VK_OEM_8] = KeyCode.Exclaim; //0xDF;//	OEM_8 (§ !)
-            map[VK_OEM_ATTN] = KeyCode.At; //0xF0;//	Oem Attn
-            map[VK_OEM_CLEAR] = KeyCode.Clear; //0xFE;//	OemClr
-            map[VK_OEM_COMMA] = KeyCode.Comma; //0xBC;//	OEM_COMMA(< ,)
-            map[VK_OEM_MINUS] = KeyCode.Minus; //0xBD;//	OEM_MINUS(_ -)
-            map[VK_OEM_PERIOD] = KeyCode.Period; //0xBE;//	OEM_PERIOD(> .)
-            map[VK_OEM_PLUS] = KeyCode.Plus; //0xBB;//	OEM_PLUS(+ =)
-            map[VK_RETURN] = KeyCode.Return; //0x0D;//	Enter
-            map[VK_SPACE] = KeyCode.Space; //0x20;//	Space
-            map[VK_SUBTRACT] = KeyCode.KeypadMinus; //0x6D;//	Num -
-            map[VK_TAB] = KeyCode.Tab; //0x09;//	Tab
-
-            map[VK__none_] = KeyCode.None; //0xFF;//	no VK mapping
-            map[VK_CAPITAL] = KeyCode.CapsLock; //0x14;//	Caps Lock
-            map[VK_DELETE] = KeyCode.Delete; //0x2E;//	Delete
-            map[VK_DOWN] = KeyCode.DownArrow; //0x28;//	Arrow Down
-            map[VK_END] = KeyCode.End; //0x23;//	End
-
-            map[VK_F1] = KeyCode.F1; //0x70;//	F1
-            map[VK_F2] = KeyCode.F2; //0x71;//	F2
-            map[VK_F3] = KeyCode.F3; //0x72;//	F3
-            map[VK_F4] = KeyCode.F4; //0x73;//	F4
-            map[VK_F5] = KeyCode.F5; //0x74;//	F5
-            map[VK_F6] = KeyCode.F6; //0x75;//	F6
-            map[VK_F7] = KeyCode.F7; //0x76;//	F7
-            map[VK_F8] = KeyCode.F8; //0x77;//	F8
-            map[VK_F9] = KeyCode.F9; //0x78;//	F9
-            map[VK_F10] = KeyCode.F10; //0x79;//	F10
-            map[VK_F11] = KeyCode.F11; //0x7A;//	F11
-            map[VK_F12] = KeyCode.F12; //0x7B;//	F12
-            map[VK_F13] = KeyCode.F13; //0x7C;//	F13
-            map[VK_F14] = KeyCode.F14; //0x7D;//	F14
-            map[VK_F15] = KeyCode.F15; //0x7E;//	F15
-
-            map[VK_HELP] = KeyCode.Help; //0x2F;//	Help
-            map[VK_HOME] = KeyCode.Home; //0x24;//	Home
-            map[VK_INSERT] = KeyCode.Insert; //0x2D;//	Insert
-            map[VK_LCONTROL] = KeyCode.LeftControl; //0xA2;//	Left Ctrl
-            map[VK_LEFT] = KeyCode.LeftArrow; //0x25;//	Arrow Left
-            map[VK_LMENU] = KeyCode.LeftAlt; //0xA4;//	Left Alt
-            map[VK_LSHIFT] = KeyCode.LeftShift; //0xA0;//	Left Shift
-            map[VK_LWIN] = KeyCode.LeftWindows; //0x5B;//	Left Win
-            map[VK_NEXT] = KeyCode.PageDown; //0x22;//	Page Down
-            map[VK_NUMLOCK] = KeyCode.Numlock; //0x90;//	Num Lock
-            map[VK_PAUSE] = KeyCode.Pause; //0x13;//	Pause
-            map[VK_PRINT] = KeyCode.Print; //0x2A;//	Print
-            map[VK_PRIOR] = KeyCode.PageUp; //0x21;//	Page Up
-            map[VK_RCONTROL] = KeyCode.RightControl; //0xA3;//	Right Ctrl
-            map[VK_RIGHT] = KeyCode.RightArrow; //0x27;//	Arrow Right
-            map[VK_RMENU] = KeyCode.RightAlt; //0xA5;//	Right Alt
-            map[VK_RSHIFT] = KeyCode.RightShift; //0xA1;//	Right Shift
-            map[VK_RWIN] = KeyCode.RightWindows; //0x5C;//	Right Win
-            map[VK_SCROLL] = KeyCode.ScrollLock; //0x91;//	Scrol Lock
-            map[VK_SNAPSHOT] = KeyCode.SysReq; //0x2C;//	Print Screen
-            map[VK_UP] = KeyCode.UpArrow; //0x26;//	Arrow Up
-        }
+        //
+        // public static void SetMappings(Dictionary<ushort, KeyCode> map)
+        // {
+        //     map[VK_ADD] = KeyCode.Plus; // 0x6B;//	Numpad +
+        //     map[VK_BACK] = KeyCode.Backspace; // 0x08;//	Backspace
+        //     map[VK_CANCEL] = KeyCode.Break; // 0x03;//	Break
+        //     map[VK_CLEAR] = KeyCode.Clear; //0x0C;//	Clear
+        //     map[VK_DECIMAL] = KeyCode.Numlock; //0x6E;//	Numpad.
+        //     map[VK_DIVIDE] = KeyCode.KeypadDivide; //0x6F;//	Numpad /
+        //     map[VK_ESCAPE] = KeyCode.Escape; //0x1B;//	Esc
+        //     map[VK_ICO_HELP] = KeyCode.Help; //0xE3;//	IcoHlp
+        //
+        //     map[VK_KEY_0] = KeyCode.Alpha0; //0x30;// ('0')	0
+        //     map[VK_KEY_1] = KeyCode.Alpha1; //0x31;// ('1')	1
+        //     map[VK_KEY_2] = KeyCode.Alpha2; //0x32;// ('2')	2
+        //     map[VK_KEY_3] = KeyCode.Alpha3; //0x33;// ('3')	3
+        //     map[VK_KEY_4] = KeyCode.Alpha4; //0x34;// ('4')	4
+        //     map[VK_KEY_5] = KeyCode.Alpha5; //0x35;// ('5')	5
+        //     map[VK_KEY_6] = KeyCode.Alpha6; //0x36;// ('6')	6
+        //     map[VK_KEY_7] = KeyCode.Alpha7; //0x37;// ('7')	7
+        //     map[VK_KEY_8] = KeyCode.Alpha8; //0x38;// ('8')	8
+        //     map[VK_KEY_9] = KeyCode.Alpha9; //0x39;// ('9')	9
+        //     map[VK_KEY_A] = KeyCode.A; //0x41;// ('A')	A
+        //     map[VK_KEY_B] = KeyCode.B; //0x42;// ('B')	B
+        //     map[VK_KEY_C] = KeyCode.C; //0x43;// ('C')	C
+        //     map[VK_KEY_D] = KeyCode.D; //0x44;// ('D')	D
+        //     map[VK_KEY_E] = KeyCode.E; //0x45;// ('E')	E
+        //     map[VK_KEY_F] = KeyCode.F; //0x46;// ('F')	F
+        //     map[VK_KEY_G] = KeyCode.G; //0x47;// ('G')	G
+        //     map[VK_KEY_H] = KeyCode.H; //0x48;// ('H')	H
+        //     map[VK_KEY_I] = KeyCode.I; //0x49;// ('I')	I
+        //     map[VK_KEY_J] = KeyCode.J; //0x4A;// ('J')	J
+        //     map[VK_KEY_K] = KeyCode.K; //0x4B;// ('K')	K
+        //     map[VK_KEY_L] = KeyCode.L; //0x4C;// ('L')	L
+        //     map[VK_KEY_M] = KeyCode.M; //0x4D;// ('M')	M
+        //     map[VK_KEY_N] = KeyCode.N; //0x4E;// ('N')	N
+        //     map[VK_KEY_O] = KeyCode.O; //0x4F;// ('O')	O
+        //     map[VK_KEY_P] = KeyCode.P; //0x50;// ('P')	P
+        //     map[VK_KEY_Q] = KeyCode.Q; //0x51;// ('Q')	Q
+        //     map[VK_KEY_R] = KeyCode.R; //0x52;// ('R')	R
+        //     map[VK_KEY_S] = KeyCode.S; //0x53;// ('S')	S
+        //     map[VK_KEY_T] = KeyCode.T; //0x54;// ('T')	T
+        //     map[VK_KEY_U] = KeyCode.U; //0x55;// ('U')	U
+        //     map[VK_KEY_V] = KeyCode.V; //0x56;// ('V')	V
+        //     map[VK_KEY_W] = KeyCode.W; //0x57;// ('W')	W
+        //     map[VK_KEY_X] = KeyCode.X; //0x58;// ('X')	X
+        //     map[VK_KEY_Y] = KeyCode.Y; //0x59;// ('Y')	Y
+        //     map[VK_KEY_Z] = KeyCode.Z; // 0x5A;// ('Z')	Z
+        //
+        //     map[VK_MULTIPLY] = KeyCode.KeypadMultiply; // 0x6A;//	Numpad*
+        //     map[VK_NONAME] = KeyCode.None; // 0xFC;//	NoName
+        //
+        //     map[VK_NUMPAD0] = KeyCode.Keypad0; //0x60;//	Numpad 0
+        //     map[VK_NUMPAD1] = KeyCode.Keypad1; //0x61;//	Numpad 1
+        //     map[VK_NUMPAD2] = KeyCode.Keypad2; //0x62;//	Numpad 2
+        //     map[VK_NUMPAD3] = KeyCode.Keypad3; //0x63;//	Numpad 3
+        //     map[VK_NUMPAD4] = KeyCode.Keypad4; //0x64;//	Numpad 4
+        //     map[VK_NUMPAD5] = KeyCode.Keypad5; //0x65;//	Numpad 5
+        //     map[VK_NUMPAD6] = KeyCode.Keypad6; //0x66;//	Numpad 6
+        //     map[VK_NUMPAD7] = KeyCode.Keypad7; //0x67;//	Numpad 7
+        //     map[VK_NUMPAD8] = KeyCode.Keypad8; //0x68;//	Numpad 8
+        //     map[VK_NUMPAD9] = KeyCode.Keypad9; //0x69;//	Numpad 9
+        //
+        //     map[VK_OEM_1] = KeyCode.Colon; // 0xBA;//	OEM_1(: ;)
+        //     map[VK_OEM_102] = KeyCode.Greater; //0xE2;//	OEM_102(> <)
+        //     map[VK_OEM_2] = KeyCode.Question; //0xBF;//	OEM_2(? /)
+        //     map[VK_OEM_3] = KeyCode.BackQuote; //0xC0;//	OEM_3(~ `)
+        //     map[VK_OEM_4] = KeyCode.LeftBracket; //0xDB;//	OEM_4({ [)
+        //     map[VK_OEM_5] = KeyCode.Backslash; //0xDC;//	OEM_5(| \)
+        //     map[VK_OEM_6] = KeyCode.RightBracket; //0xDD;//	OEM_6(} ])
+        //     map[VK_OEM_7] = KeyCode.DoubleQuote; //0xDE;//	OEM_7(" ')
+        //     map[VK_OEM_8] = KeyCode.Exclaim; //0xDF;//	OEM_8 (§ !)
+        //     map[VK_OEM_ATTN] = KeyCode.At; //0xF0;//	Oem Attn
+        //     map[VK_OEM_CLEAR] = KeyCode.Clear; //0xFE;//	OemClr
+        //     map[VK_OEM_COMMA] = KeyCode.Comma; //0xBC;//	OEM_COMMA(< ,)
+        //     map[VK_OEM_MINUS] = KeyCode.Minus; //0xBD;//	OEM_MINUS(_ -)
+        //     map[VK_OEM_PERIOD] = KeyCode.Period; //0xBE;//	OEM_PERIOD(> .)
+        //     map[VK_OEM_PLUS] = KeyCode.Plus; //0xBB;//	OEM_PLUS(+ =)
+        //     map[VK_RETURN] = KeyCode.Return; //0x0D;//	Enter
+        //     map[VK_SPACE] = KeyCode.Space; //0x20;//	Space
+        //     map[VK_SUBTRACT] = KeyCode.KeypadMinus; //0x6D;//	Num -
+        //     map[VK_TAB] = KeyCode.Tab; //0x09;//	Tab
+        //
+        //     map[VK__none_] = KeyCode.None; //0xFF;//	no VK mapping
+        //     map[VK_CAPITAL] = KeyCode.CapsLock; //0x14;//	Caps Lock
+        //     map[VK_DELETE] = KeyCode.Delete; //0x2E;//	Delete
+        //     map[VK_DOWN] = KeyCode.DownArrow; //0x28;//	Arrow Down
+        //     map[VK_END] = KeyCode.End; //0x23;//	End
+        //
+        //     map[VK_F1] = KeyCode.F1; //0x70;//	F1
+        //     map[VK_F2] = KeyCode.F2; //0x71;//	F2
+        //     map[VK_F3] = KeyCode.F3; //0x72;//	F3
+        //     map[VK_F4] = KeyCode.F4; //0x73;//	F4
+        //     map[VK_F5] = KeyCode.F5; //0x74;//	F5
+        //     map[VK_F6] = KeyCode.F6; //0x75;//	F6
+        //     map[VK_F7] = KeyCode.F7; //0x76;//	F7
+        //     map[VK_F8] = KeyCode.F8; //0x77;//	F8
+        //     map[VK_F9] = KeyCode.F9; //0x78;//	F9
+        //     map[VK_F10] = KeyCode.F10; //0x79;//	F10
+        //     map[VK_F11] = KeyCode.F11; //0x7A;//	F11
+        //     map[VK_F12] = KeyCode.F12; //0x7B;//	F12
+        //     map[VK_F13] = KeyCode.F13; //0x7C;//	F13
+        //     map[VK_F14] = KeyCode.F14; //0x7D;//	F14
+        //     map[VK_F15] = KeyCode.F15; //0x7E;//	F15
+        //
+        //     map[VK_HELP] = KeyCode.Help; //0x2F;//	Help
+        //     map[VK_HOME] = KeyCode.Home; //0x24;//	Home
+        //     map[VK_INSERT] = KeyCode.Insert; //0x2D;//	Insert
+        //     map[VK_LCONTROL] = KeyCode.LeftControl; //0xA2;//	Left Ctrl
+        //     map[VK_LEFT] = KeyCode.LeftArrow; //0x25;//	Arrow Left
+        //     map[VK_LMENU] = KeyCode.LeftAlt; //0xA4;//	Left Alt
+        //     map[VK_LSHIFT] = KeyCode.LeftShift; //0xA0;//	Left Shift
+        //     map[VK_LWIN] = KeyCode.LeftWindows; //0x5B;//	Left Win
+        //     map[VK_NEXT] = KeyCode.PageDown; //0x22;//	Page Down
+        //     map[VK_NUMLOCK] = KeyCode.Numlock; //0x90;//	Num Lock
+        //     map[VK_PAUSE] = KeyCode.Pause; //0x13;//	Pause
+        //     map[VK_PRINT] = KeyCode.Print; //0x2A;//	Print
+        //     map[VK_PRIOR] = KeyCode.PageUp; //0x21;//	Page Up
+        //     map[VK_RCONTROL] = KeyCode.RightControl; //0xA3;//	Right Ctrl
+        //     map[VK_RIGHT] = KeyCode.RightArrow; //0x27;//	Arrow Right
+        //     map[VK_RMENU] = KeyCode.RightAlt; //0xA5;//	Right Alt
+        //     map[VK_RSHIFT] = KeyCode.RightShift; //0xA1;//	Right Shift
+        //     map[VK_RWIN] = KeyCode.RightWindows; //0x5C;//	Right Win
+        //     map[VK_SCROLL] = KeyCode.ScrollLock; //0x91;//	Scrol Lock
+        //     map[VK_SNAPSHOT] = KeyCode.SysReq; //0x2C;//	Print Screen
+        //     map[VK_UP] = KeyCode.UpArrow; //0x26;//	Arrow Up
+        // }
     }
 }
