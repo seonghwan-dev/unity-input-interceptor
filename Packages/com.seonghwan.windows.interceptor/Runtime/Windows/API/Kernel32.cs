@@ -11,6 +11,6 @@ namespace Calci.Windows.API
         /// </summary>
         /// <returns></returns>
         [DllImport(DLL)]
-        public static extern uint GetCurrentThreadId();
+        internal static extern uint GetCurrentThreadId();
     }
 }

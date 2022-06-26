@@ -12,7 +12,7 @@
             // alphabets
             if (VirtualKey >= 0x41 && VirtualKey <= 0x5A)
             {
-                return (int)(32 + VirtualKey);
+                return 32 + VirtualKey;
             }
             
             // numbers

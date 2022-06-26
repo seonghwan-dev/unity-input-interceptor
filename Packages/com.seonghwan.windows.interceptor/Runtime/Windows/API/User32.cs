@@ -23,7 +23,7 @@ namespace Calci.Windows.API
         /// <param name="dwThreadId"></param>
         /// <returns></returns>
         [DllImport(DLL)]
-        public static extern IntPtr SetWindowsHookEx(
+        internal static extern IntPtr SetWindowsHookEx(
             EHookId idHook,
             HOOKPROC lpfn,
             IntPtr hmod,
@@ -36,7 +36,7 @@ namespace Calci.Windows.API
         /// <param name="hhk"></param>
         /// <returns></returns>
         [DllImport(DLL)]
-        public static extern int UnhookWindowsHookEx(
+        internal static extern int UnhookWindowsHookEx(
             IntPtr hhk
         );
 
@@ -49,7 +49,7 @@ namespace Calci.Windows.API
         /// <param name="lParam"></param>
         /// <returns></returns>
         [DllImport(DLL)]
-        public static extern int CallNextHookEx(
+        internal static extern int CallNextHookEx(
             IntPtr hhk,
             int nCode,
             IntPtr wParam,

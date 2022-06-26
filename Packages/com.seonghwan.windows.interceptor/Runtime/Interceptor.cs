@@ -21,7 +21,6 @@ namespace Calci
             
             if (pWindowsHook == IntPtr.Zero)
             {
-
                 if (handler == null)
                     handler = new DefaultKeyCodeHandler();
                 
@@ -52,16 +51,12 @@ namespace Calci
             
             bIsHooked = false;
             return true;
-            
-#if UNITY_EDITOR
-            
-#endif
         }
 
         public static void SetKeyDownCallback(Func<int, bool> keyDown)
         {
             if (bIsHooked)
-                throw new Exception("You can't change options after installed hook. ");
+                throw new HookException("You can't change options after installed hook. ");
             
             OnKeyDown = keyDown;
         }
@@ -69,7 +64,7 @@ namespace Calci
         public static void SetKeyUpCallback(Func<int, bool> keyUp)
         {
             if (bIsHooked)
-                throw new Exception("You can't change options after installed hook. ");
+                throw new HookException("You can't change options after installed hook. ");
             
             OnKeyUp = keyUp;
         }
@@ -77,7 +72,7 @@ namespace Calci
         public static void SetManagePressedKey(bool manage)
         {
             if (bIsHooked)
-                throw new Exception("You can't change options after installed hook. ");
+                throw new HookException("You can't change options after installed hook. ");
             
             bManagePressedKey = manage;
         }
@@ -85,15 +80,15 @@ namespace Calci
         public static void SetKeyCodeHandler(IKeyCodeHandler keyCodeHandler)
         {
             if (bIsHooked)
-                throw new Exception("You can't change options after installed hook. ");
+                throw new HookException("You can't change options after installed hook. ");
                 
             handler = keyCodeHandler;
         }
         
         #region Internal Fields 
         
-        private static bool bIsHooked = false;
-        private static bool bManagePressedKey = false;
+        private static bool bIsHooked;
+        private static bool bManagePressedKey;
         
         private static IntPtr pWindowsHook = IntPtr.Zero;
 
@@ -201,6 +196,13 @@ namespace Calci
         private static int GetKey(ushort key)
         {
             return handler.Handle(key);
+        }
+
+        public sealed class HookException : Exception
+        {
+            public HookException(string message) : base(message)
+            {
+            }
         }
         
         #endregion
