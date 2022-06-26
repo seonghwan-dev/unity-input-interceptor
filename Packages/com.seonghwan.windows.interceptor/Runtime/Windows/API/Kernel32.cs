@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Windows.API
+namespace Calci.Windows.API
 {
     public static class Kernel32
     {
