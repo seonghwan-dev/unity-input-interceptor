@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Windows.Utils;
-using UnityEngine;
 
 namespace Calci
 {
@@ -23,11 +21,9 @@ namespace Calci
             
             if (pWindowsHook == IntPtr.Zero)
             {
-                if (bUseKeyMap)
-                {
-                    unityKeyMap.Clear();
-                    VirtualKeyMapping.SetMappings(unityKeyMap);
-                }
+
+                if (handler == null)
+                    handler = new DefaultKeyCodeHandler();
                 
                 pWindowsHook = User32.SetWindowsHookEx(
                     EHookId.WH_KEYBOARD,
@@ -35,10 +31,6 @@ namespace Calci
                     IntPtr.Zero,
                     currentThreadId
                 );
-                
-#if UNITY_EDITOR
-                Debug.Log("[Interceptor] Successfully hooks <color=green>installed</color>. ");
-#endif
             }
 
             return pWindowsHook != IntPtr.Zero;
@@ -47,63 +39,74 @@ namespace Calci
         /// <summary>
         /// WindowsHook을 해제합니다.
         /// </summary>
-        public static void Unhook()
+        public static bool Unhook()
         {
-            if (pWindowsHook == IntPtr.Zero) return;
+            if (pWindowsHook == IntPtr.Zero) return false;
 
             User32.UnhookWindowsHookEx(pWindowsHook);
             pWindowsHook = IntPtr.Zero;
-
+            handler = null;
+            
             keys.Clear();
             cachedConsumePolicy.Clear();
-            unityKeyMap.Clear();
             
             bIsHooked = false;
+            return true;
             
 #if UNITY_EDITOR
-            Debug.Log("[Interceptor] Successfully hooks <color=yellow>uninstalled</color>. ");
+            
 #endif
         }
 
-        public static void SetKeyDownCallback(Func<KeyCode, bool> keyDown)
+        public static void SetKeyDownCallback(Func<int, bool> keyDown)
         {
+            if (bIsHooked)
+                throw new Exception("You can't change options after installed hook. ");
+            
             OnKeyDown = keyDown;
         }
 
-        public static void SetKeyUpCallback(Func<KeyCode, bool> keyUp)
+        public static void SetKeyUpCallback(Func<int, bool> keyUp)
         {
+            if (bIsHooked)
+                throw new Exception("You can't change options after installed hook. ");
+            
             OnKeyUp = keyUp;
         }
 
         public static void SetManagePressedKey(bool manage)
         {
+            if (bIsHooked)
+                throw new Exception("You can't change options after installed hook. ");
+            
             bManagePressedKey = manage;
         }
 
-        public static void SetUnityKeyCodeMap(bool useKeyMap)
+        public static void SetKeyCodeHandler(IKeyCodeHandler keyCodeHandler)
         {
-            bUseKeyMap = useKeyMap;
+            if (bIsHooked)
+                throw new Exception("You can't change options after installed hook. ");
+                
+            handler = keyCodeHandler;
         }
         
         #region Internal Fields 
         
         private static bool bIsHooked = false;
         private static bool bManagePressedKey = false;
-        private static bool bUseKeyMap = false;
         
         private static IntPtr pWindowsHook = IntPtr.Zero;
 
-        private static Func<KeyCode, bool> OnKeyDown;
-        private static Func<KeyCode, bool> OnKeyUp;
+        private static Func<int, bool> OnKeyDown;
+        private static Func<int, bool> OnKeyUp;
 
         private static readonly HashSet<ushort> keys = new HashSet<ushort>(8);
         private static readonly Dictionary<ushort, bool> cachedConsumePolicy = new Dictionary<ushort, bool>(8);
         
-        private static readonly Dictionary<ushort, KeyCode> unityKeyMap = new Dictionary<ushort, KeyCode>();
+        private static IKeyCodeHandler handler;
 
 #if UNITY_EDITOR
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-        private static void ReloadDomain()
+        public static void Reset()
         {
             bIsHooked = false;
             bManagePressedKey = false;
@@ -112,12 +115,11 @@ namespace Calci
             
             OnKeyDown = null;
             OnKeyUp = null;
+
+            handler = null;
             
             keys.Clear();
             cachedConsumePolicy.Clear();
-            unityKeyMap.Clear();
-            
-            Debug.Log("[Interceptor] SubsystemRegistration - Cleaned up! ");
         }
 #endif
         
@@ -145,7 +147,7 @@ namespace Calci
             ushort nativeKeyCode = (ushort)wParam;
             
             bool isKeyDown = IsKeyDown(nativeKeyDown);
-            KeyCode keyCode = GetKey(nativeKeyCode);
+            int keyCode = GetKey(nativeKeyCode);
 
             if (isKeyDown)
             {
@@ -196,33 +198,9 @@ namespace Calci
             return (ptr & (1 << 31)) == 0;
         }
 
-        private static KeyCode GetKey(ushort key)
+        private static int GetKey(ushort key)
         {
-            if (bUseKeyMap)
-            {
-                if (unityKeyMap.TryGetValue(key, out var keyCode))
-                {
-                    return keyCode;
-                }
-
-                return KeyCode.None;
-            }
-            
-            // alphabets
-            if (key >= 0x41 && key <= 0x5A)
-            {
-                return (KeyCode)(32 + key);
-            }
-            
-            // num pads
-            
-            // numbers
-            
-            // functions
-            
-            // combinations
-
-            return KeyCode.None;
+            return handler.Handle(key);
         }
         
         #endregion
