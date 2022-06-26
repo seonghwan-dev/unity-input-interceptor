@@ -6,7 +6,7 @@ on:
  
 jobs:
   build:
-   if: "!startsWith(github.event.release.tag_name, 'upm"
+   if: "!startsWith(github.event.release.tag_name, 'upm')"
    runs-on: ubuntu-latest
    steps:
    - uses: actions/checkout@v2
