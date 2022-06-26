@@ -1,0 +1,23 @@
+name: Publish to npm
+ 
+on:
+  release:
+   types: [published]
+ 
+jobs:
+  build:
+   if: "!startsWith(github.event.release.tag_name, 'upm"
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v2
+   - uses: actions/setup-node@v1
+     with:
+       node-version: 12
+       registry-url: https://registry.npmjs.org/
+ 
+   - run: yarn install
+   
+   - run: npm publish --access public
+     working-directory: Packages/com.seonghwan.windows.interceptor
+     env:
+       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
